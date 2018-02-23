@@ -1,4 +1,7 @@
-function events(evs) {
+function webEvents(evs) {
+
+    // Версия web-events-client
+    var VERSION = '1.1.1';
 
     /*
         Обёртка над пользовательским событием
@@ -89,7 +92,8 @@ function events(evs) {
         client = {
             emit: emit,             // Вызвать событие
             disconnect: disconnect, // Отключиться
-            reconnect: reconnect    // Переподключиться
+            reconnect: reconnect,   // Переподключиться
+            version: VERSION        // Версия web-events-client
         };
 
 
@@ -151,4 +155,4 @@ function events(evs) {
 
 }
 
-module.exports = events;
+module.exports = webEvents;
