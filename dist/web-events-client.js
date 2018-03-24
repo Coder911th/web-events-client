@@ -1,7 +1,16 @@
-function webEvents(evs) {
+function webEvents(serverURL, evs) {
+
+    /*
+        Если произошёл вызов только с одним аргументом
+        - объектом с обработчиками
+    */
+    if (!evs) {
+        evs = serverURL;
+        serverURL = null;
+    }
 
     // Версия web-events-client
-    var VERSION = '2.0.1';
+    var VERSION = '2.1.0';
 
     /*
         Обёртка над пользовательским событием
@@ -110,7 +119,10 @@ function webEvents(evs) {
     function connect() {
 
         // Устанавливаем соединение по WebSocket
-        socket = new WebSocket('ws://' + location.hostname);
+        socket = new WebSocket( serverURL == null
+            ? 'ws://' + location.hostname
+            : serverURL
+        );
 
         // Соединение открыто
         socket.onopen = function() {
