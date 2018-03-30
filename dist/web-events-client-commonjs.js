@@ -10,7 +10,7 @@ function webEvents(serverURL, evs) {
     }
 
     // Версия web-events-client
-    var VERSION = '2.1.0';
+    var VERSION = '2.2.0';
 
     /*
         Обёртка над пользовательским событием
