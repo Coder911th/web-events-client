@@ -73,6 +73,14 @@ function webEvents(serverURL, evs) {
         случае клиент получит один объект целиком
     */
     function emit(eventName) {
+        // Если вызов произошёл до того как соединение было установлено
+        if (socket.readyState == WebSocket.CONNECTING) {
+            setTimeout(function() {
+                emit.apply(arguments);
+            }, 4);
+            return;
+        }
+        
         // Аргументы вызова, отправляемые серверу
         var args = Array.prototype.slice.call(arguments, 1);
 
