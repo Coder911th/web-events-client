@@ -104,12 +104,15 @@ function webEvents(serverURL, evs) {
         socket = null,
 
         // Функциональность клиента (возвращается из функции events)
-        client = {
-            emit: emit,             // Вызвать событие
-            disconnect: disconnect, // Отключиться
-            reconnect: reconnect,   // Переподключиться
-            version: VERSION        // Версия web-events-client
+        client = function() {
+            emit.apply(null, arguments);
+            return client;
         };
+
+        client.emit = emit;             // Вызвать событие
+        client.disconnect = disconnect; // Отключиться
+        client.reconnect = reconnect;   // Переподключиться
+        client.version = VERSION;       // Версия web-events-client
 
 
     /*
