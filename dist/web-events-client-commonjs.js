@@ -10,7 +10,7 @@ function webEvents(serverURL, evs) {
     }
 
     // Версия web-events-client
-    var VERSION = '2.2.0';
+    var VERSION = '2.2.1';
 
     /*
         Обёртка над пользовательским событием
@@ -94,7 +94,7 @@ function webEvents(serverURL, evs) {
         и обработчиками событий
     */
     function reconnect() {
-        if (WebSocket.OPEN)
+        if (socket.readyState == WebSocket.OPEN)
             socket.close();
         connect();
     }
